@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+ <body>
+ <div id="display">
+ </div>
+ <p><input id="message" type="text" name="message"></p>
+ <p><input id="username" type="text" name="username"></p>
+ <p>
+ <button type="button" onclick="postdata()">Submit Message</button>
+ </p>
+ </body>
+<script>  
+function getmessage() {
+
+  var xhttp = new XMLHttpRequest();
+  var formdata = new FormData();
+  formdata.append("info", "XMLHttpRequest");
+  
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);	  
+    }
+  };
+  xhttp.open("POST", "form.php", true);
+  xhttp.send(formdata);
+
+}
+
+function postdata() {
+
+}
+getmessage();
+ </script>
+ </html>
