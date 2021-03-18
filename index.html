@@ -2,13 +2,19 @@
 <head>
 </head>
  <body>
- <div id="display">
- </div>
- <p><input id="message" type="text" name="message"></p>
- <p><input id="username" type="text" name="username"></p>
- <p>
- <button type="button" onclick="postdata()">Submit Message</button>
- </p>
+ 
+ <!-- <p><input id="message" type="text" name="message"></p>
+ <p><input id="username" type="text" name="username"></p> -->
+
+ <div id="response"></div>
+ <fieldset><legend>Post a message:</legend>
+	<p><strong>Username</strong>: <input id="username" name="username" type="text" size="30" maxlength="100"></p>
+	<p><strong>Message</strong>: <input id="message" name="message" type="text" size="30" maxlength="100"></p>
+ </fieldset>
+
+ <p><button type="button" onclick="postdata()">Submit Message</button></p>
+
+ <div id="display"></div>
  </body>
 <script>  
 function getmessage() {
@@ -19,15 +25,44 @@ function getmessage() {
   
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);	  
+      console.log(this.responseText);	
+      
+      document.querySelector("#response").innerHTML = this.responseText;
+      
     }
   };
-  xhttp.open("POST", "form.php", true);
+  xhttp.open("POST", "messages.php", true);
   xhttp.send(formdata);
 
 }
 
 function postdata() {
+
+  var xhttp = new XMLHttpRequest();
+  var formdata = new FormData();
+  var messageOutput = document.getElementById("message").value;
+  var usernameOutput = document.getElementById("username").value;
+
+  // var form_data = new FormData();
+  // var formdata = new FormData();
+
+
+
+  formdata.append("message", messageOutput);
+  formdata.append("username", usernameOutput);
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);	
+      
+      document.querySelector("#display").innerHTML = this.responseText;
+      
+    }
+  };
+  xhttp.open("POST", "input.php", true);
+  xhttp.send(formdata);
+ 
+
 
 }
 getmessage();

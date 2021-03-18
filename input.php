@@ -1,19 +1,3 @@
-<html>
-<body>
-	
-<form action="input.php" method="post">
-
-	<fieldset><legend>Post a message:</legend>
-
-	<p><strong>Username</strong>: <input name="username" type="text" size="30" maxlength="100" value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>"></p>
-
-	<p><strong>Message</strong>: <input name="message" type="text" size="30" maxlength="100" value="<?php if (isset($_POST['message'])) echo $_POST['message']; ?>"></p>
-
-	</fieldset>
-	<div align="center"><input type="submit" name="submit" value="Submit"></div>
-
-</form>
-	
 <?php
 	
 	require("mysqli_oop_connect.php");
@@ -68,8 +52,7 @@
         $stmt->close();
         unset($stmt);
             
-}
+     }
 	
 ?>
-</body>
-</html>
+
