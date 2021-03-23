@@ -15,7 +15,7 @@
         $stmt = $mysqli->prepare($q);
 
         
-        //Check whether the username or password is empty or not
+        //Check whether the username or message is empty or not
 
         if(empty($_POST['username'])){
             echo 'Please Enter Username <br>';
